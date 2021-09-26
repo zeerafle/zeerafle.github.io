@@ -1,0 +1,32 @@
+@media screen and (min-width: 768px) {
+    .project-item img{
+        float: left;
+        margin-right: 20px;
+    }
+    .job-item {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        column-gap: 20px;
+    }
+    header, footer {
+        text-align: center;
+    }
+    .contact-list {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width:767px) {
+    h1 {
+        font-size: 50px;
+        line-height: 1.4;
+        margin-bottom: 20px;
+    }
+    h2 {
+        line-height: 1;
+    }
+    .contact-list a {
+        padding: 5px;
+    }
+}

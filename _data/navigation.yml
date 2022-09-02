@@ -1,9 +1,31 @@
 main:
   - title: "Posts"
     url: /posts/
-  - title: "Categories"
-    url: /categories/
-  - title: "Tags"
-    url: /tags/
+  - title: "College Notes"
+    url: /college-notes/
+  # - title: "Tags"
+  #   url: /tags/
   - title: "About"
     url: /about/
+
+season-5:
+  - title: Bahasa Inggris 2
+    children:
+      - title: "TOEFL"
+        url: /_college-notes/season-5/bahasa-inggris-2/01_toefl
+
+  - title: Computer Vision
+    children:
+      - title: "Topik Penelitian Computer Vision"
+        url: /_college-notes/season-5/computer-vision/01_topik-penelitian-computer-vision
+
+  - title: Jaringan Saraf Tiruan
+    children:
+      - title: "Pengantar Machine Learning"
+        url: /_college-notes/season-5/jaringan-saraf-tiruan/01_machine-learning
+      - title: "Pengantar Jaringan Saraf Tiruan"
+        url: /_college-notes/season-5/jaringan-saraf-tiruan/02_intro-to-jst
+  - title: Komputer Grafik
+    children:
+      - title: "Komputer Grafik 101"
+        url: /_college-notes/season-5/komputer-grafik/01_komputer-grafik

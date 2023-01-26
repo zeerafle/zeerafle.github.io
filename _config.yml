@@ -76,6 +76,9 @@ author:
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
       url: "https://instagram.com/zeerafle"
+    - label: "Goodreads"
+      icon: "fa-brands fa-goodreads-g"
+      url: "https://www.goodreads.com/user/show/107865794-sam-fareez"
 
 footer:
   links:
@@ -112,9 +115,19 @@ defaults:
       toc: true
       sidebar:
         nav: season-5
+  # _gdsc-solution-challenge
+  - scope:
+      path: "collections/_gdsc-solution-challenge"
+      type: posts
+    values:
+      layout: single
+      toc: true
 
 collections:
   college-notes:
+    output: true
+    permalink: /:collection/:path
+  gdsc-solution-challenge:
     output: true
     permalink: /:collection/:path
 

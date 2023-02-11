@@ -1,8 +1,11 @@
 ---
 title: College Notes
-layout: collection
+layout: single
 permalink: /college-notes/
-collection: college-notes
-entries_layout: grid
 classes: wide
+author_profile: false
+sidebar:
+    nav: "season-6"
 ---
+
+Catatan Kuliah Season 6. Buka catatan dengan klik navigasi di samping.

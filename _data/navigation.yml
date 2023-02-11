@@ -8,6 +8,12 @@ main:
   - title: "About"
     url: /about/
 
+season-6:
+  - title: Metode Penelitian untuk Riset TI
+    children:
+      - title: "Kontrak Kuliah"
+        url: /college-notes/season-6/metpen/01-kontrak-kuliah/
+
 season-5:
   - title: Bahasa Inggris 2
     children:

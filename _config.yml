@@ -60,13 +60,13 @@ plugins:
   - jekyll-spaceship
 
 author:
-  name   : "Sam fareez"
-  avatar : "/assets/images/bio-photo.jpg"
-  bio    : "Data nerd. Cinephile"
+  name: "Sam fareez"
+  avatar: "/assets/images/bio-photo.jpg"
+  bio: "Data nerd. Cinephile"
   links:
-    # - label: "Website"
-    #   icon: "fas fa-fw fa-link"
-    #   url: "https://"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://linkedin.com/in/samfareez/"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
       url: "https://twitter.com/zeerafle"
@@ -77,10 +77,10 @@ author:
       icon: "fab fa-fw fa-instagram"
       url: "https://instagram.com/zeerafle"
     - label: "Goodreads"
-      icon: "fab fa-brands fa-goodreads"
+      icon: "fab fa-fw fa-goodreads"
       url: "https://www.goodreads.com/user/show/107865794-sam-fareez"
     - label: "Last.fm"
-      icon: "fab fa-brands fa-lastfm"
+      icon: "fab fa-fw fa-lastfm"
       url: "https://www.last.fm/user/zeerafle"
 
 footer:
@@ -108,16 +108,23 @@ defaults:
     values:
       layout: single
       author_profile: true
-  # _college_notes
+  # _college_notes sesason 6
   - scope:
       path: "_college-notes"
-      type: posts
+      type: college-notes
     values:
       layout: single
       read_time: true
       toc: true
       sidebar:
-        nav: season-5
+        nav: "season-6"
+  # _college_notes season 5
+  - scope:
+      path: "_college-notes/season-5"
+    values:
+      hidden: true
+      sidebar:
+        nav: "season-5"
 
 collections:
   college-notes:

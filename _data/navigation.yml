@@ -12,7 +12,9 @@ season-6:
   - title: Metode Penelitian untuk Riset TI
     children:
       - title: "Kontrak Kuliah"
-        url: /college-notes/season-6/metpen/01-kontrak-kuliah/
+        url: /college-notes/season-6/metpen/01-kontrak-kuliah
+      - title: "Konsep Dasar Penelitian"
+        url: /college-notes/season-6/metpen/02-konsep-penelitian
 
 season-5:
   - title: Bahasa Inggris 2

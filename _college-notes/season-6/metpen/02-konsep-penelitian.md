@@ -26,12 +26,19 @@ Hasil akhirnya publikasi
 		- Penelitian yang mirip sebelumnya
 		- Sebutkan apa yang dihasilkan penelitian sebelumnya
 		- Jelaskan apa bedanya sama penelitian kita
-1. Rancangan penelitian 
-2. Pengumpulan data 
-3. Pengolahan data 
-4. Penyimpulan hasil 
+4. Rancangan penelitian 
+5. Pengumpulan data 
+6. Pengolahan data 
+7. Penyimpulan hasil 
 
 Hasil dari penelitian:
 - Produk atau inovasi baru
 - Paten, pengakuan secara hukum bahwa peneliti adalah inventor nya
 - Publikasi
+
+## Berpikir Logis
+
+Berpikir logis ada dua:
+
+- Induktif. Kumpulan fakta jadi teori
+- Deduktif. Teori yang ada jadi pengetahuan baru

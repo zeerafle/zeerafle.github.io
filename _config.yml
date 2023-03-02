@@ -32,6 +32,7 @@ permalink: /:categories/:title/
 paginate: 5 # amount of posts to show
 paginate_path: /page:num/
 timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+repository: "zeerafle/zeerafle.github.io"
 
 include:
   - _pages
@@ -130,6 +131,13 @@ collections:
   college-notes:
     output: true
     permalink: /:collection/:path
+
+comments:
+  provider: "utterances"
+  utterances:
+    theme: "github-dark"
+    issue_term: "pathname"
+    label: "comment" # Optional - must be existing label.
 
 category_archive:
   type: liquid

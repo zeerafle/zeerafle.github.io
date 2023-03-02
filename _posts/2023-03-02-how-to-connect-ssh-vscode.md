@@ -1,7 +1,9 @@
 ---
 title: How to Connect to SSH via VSCode
-comments: true
+toc: true
 ---
+
+> Read this post in [Indonesian](https://zeerafle-github-io.translate.goog/how-to-connect-ssh-vscode/?_x_tr_sl=en&_x_tr_tl=id&_x_tr_hl=en&_x_tr_pto=wapp)
 
 When you sign up for a Google course, be it Google Cloud Skill Boost or Coursera, the assignment requires you to code in the Linux virtual machine created for you once you start the lab, namely Qwiklabs. Since its using Linux, they just provide you with a terminal where you can type command line and even edit code. While this helps you practice on a common, real-world situation, some of you, even me, get tired of it. Here's how you can connect VSCode to an SSH instance so you can code with VSCode while also using the terminal connected to the virtual machine.
 

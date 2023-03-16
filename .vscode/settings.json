@@ -1,0 +1,12 @@
+{
+    "pasteImage.path": "${projectRoot}/assets/img",
+    "pasteImage.showFilePathConfirmInputBox": true,
+    "spellright.language": [
+        "id"
+    ],
+    "spellright.documentTypes": [
+        "markdown",
+        "latex",
+        "plaintext"
+    ]
+}

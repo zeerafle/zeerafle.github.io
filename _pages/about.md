@@ -9,6 +9,7 @@ I love watching movies and analyzing every aspect of it. Also, I sometimes read 
 
 Here is some of my badges I got throughout my learning journey
 
+<div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="436eeff0-2aa9-477f-b72e-3811cb04bc67" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
 <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="2bbbbb22-af04-4476-82cf-f4c945bb1892" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
 <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="903712d1-3149-477c-8785-24cf015d10ea" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
 <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="a50ac663-ff36-4508-8074-277cfab12056" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>

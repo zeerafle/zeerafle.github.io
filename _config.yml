@@ -20,7 +20,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   A personal site used for blog and college notes
 twitter_username: zeerafle
 github_username: zeerafle
-minimal_mistakes_skin: neon
+minimal_mistakes_skin: "sunrise"
 search: true
 locale: id-ID
 
@@ -61,7 +61,7 @@ plugins:
   - jekyll-spaceship
 
 author:
-  name: "Sam fareez"
+  name: "Sam Fareez"
   avatar: "/assets/images/bio-photo.jpg"
   bio: "Data nerd. Cinephile"
   links:

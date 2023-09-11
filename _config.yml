@@ -20,7 +20,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   A personal site used for blog and college notes
 twitter_username: zeerafle
 github_username: zeerafle
-minimal_mistakes_skin: "sunrise"
+minimal_mistakes_skin: "contrast"
 search: true
 locale: id-ID
 
@@ -126,18 +126,29 @@ defaults:
       hidden: true
       sidebar:
         nav: "season-5"
+  # _portfolio
+  - scope:
+      path: "_portfolio"
+    values:
+      layout: single
+      read_time: true
+      toc: true
+
 
 collections:
   college-notes:
     output: true
     permalink: /:collection/:path
+  portfolio:
+    output: true
+    permalink: /:collection/:path
 
-comments:
-  provider: "utterances"
-  utterances:
-    theme: "github-dark"
-    issue_term: "pathname"
-    label: "comment" # Optional - must be existing label.
+# comments:
+#   provider: "utterances"
+#   utterances:
+#     theme: "github-dark"
+#     issue_term: "pathname"
+#     label: "comment" # Optional - must be existing label.
 
 category_archive:
   type: liquid

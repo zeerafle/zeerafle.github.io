@@ -2,6 +2,7 @@
     "pasteImage.path": "${projectRoot}/assets/img",
     "pasteImage.showFilePathConfirmInputBox": true,
     "spellright.language": [
+        "en",
         "id"
     ],
     "spellright.documentTypes": [

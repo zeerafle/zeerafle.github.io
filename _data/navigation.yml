@@ -1,14 +1,14 @@
 main:
   - title: "Posts"
     url: /posts/
+  - title: "Portfolio"
+    url: /portfolio/
   - title: "College Notes"
     url: /college-notes/
   # - title: "Tags"
   #   url: /tags/
   - title: "About"
     url: /about/
-  - title: "Portfolio"
-    url: /portfolio/
 
 season-6:
   - title: Metode Penelitian untuk Riset TI

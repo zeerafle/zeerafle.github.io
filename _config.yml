@@ -17,7 +17,7 @@ title: Sam Fareez
 name: Sam Fareez
 email: vsefareez@outlook.com
 description: >- # this means to ignore newlines until "baseurl:"
-  A personal site used for blog and college notes
+  A personal site used for blog, portfolio, and college notes
 twitter_username: zeerafle
 github_username: zeerafle
 minimal_mistakes_skin: "contrast"
@@ -68,7 +68,7 @@ author:
     - label: "LinkedIn"
       icon: "fab fa-fw fa-linkedin"
       url: "https://linkedin.com/in/samfareez/"
-    - label: "Twitter"
+    - label: "X"
       icon: "fab fa-fw fa-twitter-square"
       url: "https://twitter.com/zeerafle"
     - label: "GitHub"
@@ -77,6 +77,9 @@ author:
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
       url: "https://instagram.com/zeerafle"
+    - label: "Letterboxd"
+      icon: "fab fa-fw fa-letterboxd"
+      url: "https://boxd.it/7POXX"
     - label: "Goodreads"
       icon: "fab fa-fw fa-goodreads"
       url: "https://www.goodreads.com/user/show/107865794-sam-fareez"

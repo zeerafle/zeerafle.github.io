@@ -45,4 +45,28 @@ Style sitasi dan daftar pustaka sesuai dengan template dan beberapa koreksi dose
 
 ## Catatan Konsul
 
-_tunggu lulus_
+- Metrik pengujian disebutnya di bab 3
+- Batasan masalah diganti ke (untuk skripsi yang berhubungan dengan pengolahan citra/computer vision) ukuran citra, format citra, dll.
+- Cross validation masuk ke perancangan pengujian
+- Jadwal penelitian diganti jadi dari mulai konsul 1
+- Dijudul, istilah asing dimiringkan
+- Di halaman cover, bagian "Fakultas Teknik Universitas Mulawarman Samarinda 2023" di tempatkan sampai paling bawah
+- Singkatan sebutkan kepanjangan dulu baru singkatannya di dalam kurung (contoh: Machine Learning (ML))
+- Setelah caption gambar, ditambah penjelasannya
+- Sitasi sebisa mungkin jangan ada yang lebih dari 10 tahun kebelakang
+- Di hasil, di tabel yang nunjukin sampel, masukin gambarnya
+- Tabel yang isinya angka rata kanan
+- Pemisah ribuan itu titik
+- Di naskah skripsi (hasil) tidak perlu jadwal penelitian lagi
+- Untuk maju hasil referensi minimal 40
+- Lokasi pengambilan data disebutkan
+- Masukkan bukti wawancara
+- Urgensi kurang jadi tambah referensi
+- Kata "metrik pengujian" diganti jadi "parameter pengujian"
+- Penjelasan variabel pada rumus pakai poin
+- Sebutkan spesifikasi minimal yang dipakai untuk menjalankan program di bab 3
+- Perhitungan hasil nda perlu dihitung lagi, mention aja dari persamaan berapa
+
+## Apa yang harus dilakukan setelah sidang?
+
+Buka [WTDAS](https://wtdas.pages.dev)

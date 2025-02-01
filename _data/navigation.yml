@@ -3,8 +3,8 @@ main:
     url: /posts/
   - title: "Portfolio"
     url: /portfolio/
-  - title: "College Notes"
-    url: /college-notes/
+  # - title: "College Notes"
+  #   url: /college-notes/
   # - title: "Tags"
   #   url: /tags/
   - title: "About"

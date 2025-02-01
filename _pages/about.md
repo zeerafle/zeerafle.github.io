@@ -3,13 +3,15 @@ permalink: /about/
 title: "About"
 ---
 
-I am a motivated and passionate data scientist who enjoys using machine learning and artificial intelligence to real-world challenges. I have a good foundation in both theoretical and practical parts of these subjects. When I'm not working, you can find me actively competing in data science contests, developing my abilities and staying up to date on the newest advances in the industry. My ultimate objective is to use my experience to make a good effect and encourage industry innovation.
+I am an AI engineering enthusiast. I enjoy using machine learning and/or AI to build something. I have good foundation in both theoritical and practical parts regarding these subjects. Building an impactful stuff as well as encouraging industry innovation has always been my desire. Currently I'm continuing my study on AI for my master's degree.
 
-I love watching movies and analyzing every aspect of it. Also, I sometimes read science books (check out my Goodreads profile). And I listen to music very often, check out my Last.fm profile if you wanna know what I listen to.
+I love watching movies and analyzing every aspect of it. Also, I sometimes [read science books](https://www.goodreads.com/user/show/107865794-sam-fareez). And I listen to [music very often](https://www.last.fm/user/zeerafle).
 
-Here I proudly present my Tensorflow Developer Certificate badge. 
+Here I proudly present my Tensorflow Developer Certificate badge.
 
 [![](https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/85569553)](https://www.credential.net/2da6db1c-3874-469f-a7f0-dedeaff8d09a)
+
+And my Microsoft AI Engineer certificate [here](https://learn.microsoft.com/api/credentials/share/id-id/SamFareez-8322/2990C7E53DAE60A9?sharingId=C5FF9EF01F86E08)
 
 And here is some of my badges I got throughout my learning journey.
 

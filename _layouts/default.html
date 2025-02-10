@@ -8,6 +8,7 @@
 <head>
     {% include head.html %}
     {% include head/custom.html %}
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 
 <body
@@ -44,8 +45,8 @@
         </div>
         <div class="chatbot-messages" id="chatbotMessages"></div>
         <div class="chatbot-input">
-            <input type="text" placeholder="Ask me anything">
-            <button>Send</button>
+            <input type="text" placeholder="Ask me anything" id="chatbot-input-text">
+            <button onclick="ask()">Send</button>
         </div>
     </div>
 

@@ -32,6 +32,7 @@ permalink: /:categories/:title/
 paginate: 5 # amount of posts to show
 paginate_path: /page:num/
 timezone: Turkey
+chatbot_api_url: "https://personal-website-rag-dry-night-3555.fly.dev"
 repository: "zeerafle/zeerafle.github.io"
 
 include:

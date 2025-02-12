@@ -11,7 +11,7 @@ async function ask(baseUrl) {
     const chat = document.getElementById('chatbotMessages');
     chat.innerHTML += `<p><strong>You:</strong> ${message}</p>`;
 
-    const response = await fetch(baseUrl, {
+    const response = await fetch(`${baseUrl}/ask`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

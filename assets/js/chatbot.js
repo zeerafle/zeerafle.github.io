@@ -3,7 +3,7 @@ function toggleChatbot() {
   container.style.display = container.style.display === 'block' ? 'none' : 'block';
 }
 
-async function ask() {
+async function ask(baseUrl) {
     const input = document.getElementById('chatbot-input-text');
     const message = input.value;
     input.value = '';
@@ -11,7 +11,7 @@ async function ask() {
     const chat = document.getElementById('chatbotMessages');
     chat.innerHTML += `<p><strong>You:</strong> ${message}</p>`;
 
-    const response = await fetch(`http://localhost:8000/ask`, {
+    const response = await fetch(baseUrl, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -24,5 +24,5 @@ async function ask() {
     const data = await response.json();
     const parsed_answer = marked.parse(data.answer);
 
-    chat.innerHTML += `<p><strong>Chatbot:</strong> ${parsed_answer}</p>`;
+    chat.innerHTML += `<p><hr> ${parsed_answer}</p>`;
 }

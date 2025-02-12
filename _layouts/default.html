@@ -40,13 +40,15 @@
     <!-- Chatbot Elements -->
     <div class="chatbot-container" id="chatbotContainer">
         <div class="chatbot-header">
-            <h4>Virtual Assistant</h4>
-            <button class="close-btn" onclick="toggleChatbot()">×</button>
+            <h4>Sam's Assistant</h4>
+            <button class="close-btn" onclick="toggleChatbot()">
+                <i class="fas fa-solid fa-xmark"></i>
+            </button>
         </div>
         <div class="chatbot-messages" id="chatbotMessages"></div>
         <div class="chatbot-input">
             <input type="text" placeholder="Ask me anything" id="chatbot-input-text">
-            <button onclick="ask()">Send</button>
+            <button onclick="ask('{{ site.chatbot_api_url }}')">Send</button>
         </div>
     </div>
 

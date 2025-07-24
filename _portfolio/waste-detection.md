@@ -1,11 +1,19 @@
 ---
 title: "Waste Detection"
-excerpt: "Building waste detection with TensorFlow Object Detection API.
-    The model was able to detect 7 different types of very common waste"
 header:
   teaser: assets/img/test-images-waste-detection.png
 toc_sticky: true
+sidebar:
+  - title: "Role"
+    text: "Machine Learning Engineer"
+  - title: "Responsibilities"
+    text: "Collect data and develop Object Detection Model"
+number: 1
 ---
+
+TL;DR. Built an AI-powered waste detection system for EcoCrafters app in one month, creating a model to identify 7 waste types from images. Developed end-to-end ML pipeline using TensorFlow Object Detection API, processed 6000+ annotated images, and deployed via Cloud Run. Achieved 42% mAP score, doubling baseline performance, and successfully deployed real-time detection serving Android users.
+
+<iframe src="https://ecocrafters.fly.dev/" width="100%" height="600" frameborder="0"></iframe>
 
 # Introduction
 
@@ -190,5 +198,3 @@ I'll be happy to answer it.
 For more details on our activity, have a look at the trello card below.
 
 <blockquote class="trello-card"><a href="https:&#x2F;&#x2F;trello.com&#x2F;c&#x2F;kwYtvI5Z">Developing Waste Detection Model</a></blockquote><script src="https://p.trellocdn.com/embed.min.js"></script>
-
-

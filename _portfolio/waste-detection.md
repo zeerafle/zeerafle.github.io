@@ -8,7 +8,7 @@ sidebar:
     text: "Machine Learning Engineer"
   - title: "Responsibilities"
     text: "Collect data and develop Object Detection Model"
-number: 1
+number: 2
 ---
 
 TL;DR. Built an AI-powered waste detection system for EcoCrafters app in one month, creating a model to identify 7 waste types from images. Developed end-to-end ML pipeline using TensorFlow Object Detection API, processed 6000+ annotated images, and deployed via Cloud Run. Achieved 42% mAP score, doubling baseline performance, and successfully deployed real-time detection serving Android users.

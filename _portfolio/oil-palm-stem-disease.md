@@ -4,6 +4,7 @@ excerpt: "Building oil palm stem disease detection with CNN and SVM.
     CNN used to extract features from images and SVM used to classify the features."
 header:
   teaser: assets/img/extracted-oil-palm-stem-image.png
+hidden: true
 ---
 
 > Try out the prediction in [this web app](https://oil-palm-stem-prediction.fly.dev/).

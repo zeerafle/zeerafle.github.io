@@ -5,6 +5,7 @@ header:
   teaser: assets/img/theLook-customer-segmentation.png
 classes: wide
 toc_sticky: true
+hidden: true
 ---
 
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1BoFoCcNxoqfGQZZVaq7gOdU5W7R5OjYr?usp=sharing)

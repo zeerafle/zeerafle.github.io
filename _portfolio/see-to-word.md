@@ -3,6 +3,7 @@ title: "See To Word"
 excerpt: "A web app to help visually impaired individuals to get better understanding of its surrounding by using AI to describe image from the device's camera"
 header:
   teaser: assets/img/seetoword-demo.jpg
+number: 4
 ---
 
 This project wins IDCamp Challenge 2023 as top 20 products. Posted in instagram as well as its demo. [Try it here](https://seetoword.pages.dev)

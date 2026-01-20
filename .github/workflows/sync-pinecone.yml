@@ -28,7 +28,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install pinecone-client langchain-community langchain-text-splitters gitpython python-dotenv unstructured markdown
+          pip install pinecone langchain-community langchain-text-splitters gitpython python-dotenv unstructured markdown
 
       - name: Sync to Pinecone
         env:

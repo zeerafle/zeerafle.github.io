@@ -11,18 +11,17 @@ async function ask(baseUrl) {
     const chat = document.getElementById('chatbotMessages');
     chat.innerHTML += `<p><strong>You:</strong> ${message}</p>`;
 
-    const response = await fetch(`${baseUrl}/ask`, {
+    const response = await fetch(`${baseUrl}/chat`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            question: message,
+            message: message,
         }),
     });
 
     const data = await response.json();
-    const parsed_answer = marked.parse(data.answer);
 
-    chat.innerHTML += `<p><hr> ${parsed_answer}</p>`;
+    chat.innerHTML += `<p><hr> ${data.message}</p>`;
 }

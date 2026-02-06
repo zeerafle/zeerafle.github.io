@@ -39,7 +39,7 @@ async function ask(baseUrl) {
 
     if (!response.ok) {
       if (response.status === 429) {
-        chat.innerHTML += `<p><hr> <strong>Error:</strong> Sorry rate limit exceeded, I use free tier 😛. Please try again later.</p>`;
+        chat.innerHTML += `<p><hr> <strong>Error:</strong> Sorry rate limit exceeded, I'm using the free tier 😛. Please try again later or tomorrow.</p>`;
         return;
       }
 
@@ -59,12 +59,13 @@ async function ask(baseUrl) {
     const data = await response.json();
     chat.innerHTML += `<p><hr> ${marked.parse(data.message)}</p>`;
     chat.scrollTop = chat.scrollHeight;
-  } catch {
+  } catch (error) {
+    console.error("Chatbot error:", error);
     // Remove loading indicator on error
     const loadingEl = document.getElementById(loadingId);
     if (loadingEl) loadingEl.remove();
 
-    chat.innerHTML += `<p><hr> <strong>Error:</strong> Network error. Please try again.</p>`;
+    chat.innerHTML += `<p><hr> <strong>Error:</strong> ${error.message || "Network error. Please try again."}</p>`;
   } finally {
     // Re-enable input and button after response
     input.disabled = false;

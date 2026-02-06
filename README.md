@@ -35,30 +35,33 @@ or [StackOverflow](https://stackoverflow.com/questions/tagged/jekyll). Other res
 ## Local Installation
 
 1. Install rbenv
-    ```bash
-    sudo apt install rbenv
-    ```
+   ```bash
+   sudo apt install rbenv
+   ```
 2. Install ruby-build as plugin
-    ```bash
-    git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
+   ```bash
+   git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
    ```
 3. Install ruby 3.1.2 with rbenv
-    ```bash
-    rbenv install 3.1.2
-    ```
+   ```bash
+   rbenv install 3.1.2
+   ```
 4. Set ruby 3.1.2 as global ruby
-    ```bash
-    rbenv global 3.1.2
-    ```
+   ```bash
+   rbenv global 3.1.2
+   ```
 5. Install bundler
-    ```bash
-    gem install bundler
-    ```
+   ```bash
+   gem install bundler
+   ```
 6. Install dependencies
-    ```bash
-    bundle install
-    ```
+   ```bash
+   bundle install
+   ```
 7. Run jekyll
-    ```bash
-    bundle exec jekyll serve -l
-    ``` 
+
+   ```bash
+   bundle exec jekyll serve -l
+   # with development config
+   bundle exec jekyll serve -l --config _config.yml,_config_development.yml
+   ```

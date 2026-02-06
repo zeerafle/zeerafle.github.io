@@ -6,11 +6,21 @@ function toggleChatbot() {
 
 async function ask(baseUrl) {
   const input = document.getElementById("chatbot-input-text");
+  const sendButton = document.querySelector(".chatbot-input button");
   const message = input.value;
+
+  // Disable input and button while waiting
+  input.disabled = true;
+  sendButton.disabled = true;
   input.value = "";
 
   const chat = document.getElementById("chatbotMessages");
   chat.innerHTML += `<p><strong>You:</strong> ${message}</p>`;
+
+  // Add loading indicator
+  const loadingId = "loading-" + Date.now();
+  chat.innerHTML += `<p id="${loadingId}"><span class="loading-dots"><span>.</span><span>.</span><span>.</span></span></p>`;
+  chat.scrollTop = chat.scrollHeight;
 
   try {
     const response = await fetch(`${baseUrl}/chat`, {
@@ -22,6 +32,10 @@ async function ask(baseUrl) {
         message: message,
       }),
     });
+
+    // Remove loading indicator
+    const loadingEl = document.getElementById(loadingId);
+    if (loadingEl) loadingEl.remove();
 
     if (!response.ok) {
       if (response.status === 429) {
@@ -44,7 +58,17 @@ async function ask(baseUrl) {
 
     const data = await response.json();
     chat.innerHTML += `<p><hr> ${marked.parse(data.message)}</p>`;
+    chat.scrollTop = chat.scrollHeight;
   } catch {
+    // Remove loading indicator on error
+    const loadingEl = document.getElementById(loadingId);
+    if (loadingEl) loadingEl.remove();
+
     chat.innerHTML += `<p><hr> <strong>Error:</strong> Network error. Please try again.</p>`;
+  } finally {
+    // Re-enable input and button after response
+    input.disabled = false;
+    sendButton.disabled = false;
+    input.focus();
   }
 }

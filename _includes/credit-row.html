@@ -1,0 +1,9 @@
+<li class="credit">
+  <a href="{{ include.item.url | relative_url }}">{{ include.item.title }}</a>
+  <span class="credit__dots" aria-hidden="true"></span>
+  {% if include.item.collection == 'posts' -%}
+  <time class="meta" datetime="{{ include.item.date | date_to_xmlschema }}">{{ include.item.date | date: '%Y.%m.%d' }}</time>
+  {%- elsif include.label -%}
+  <span class="meta">{{ include.label }}</span>
+  {%- endif %}
+</li>

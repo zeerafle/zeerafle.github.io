@@ -1,0 +1,13 @@
+{% assign cover = include.item.header.teaser | default: include.item.header.image | default: include.item.cover %}
+{% assign role = include.item.role %}
+{% if role == nil and include.item.sidebar[0].title == 'Role' %}{% assign role = include.item.sidebar[0].text %}{% endif %}
+<li class="scene">
+  <a href="{{ include.item.url | relative_url }}">
+    {% if cover %}<img class="scene__cover" data-ascii src="{{ cover | relative_url }}" alt="">{% endif %}
+    <span class="scene__no meta">SCENE {{ include.n | prepend: '00' | slice: -2, 2 }}</span>
+    <span class="scene__title">{{ include.item.title }}</span>
+    {% capture meta %}{{ include.item.year }}{% if include.item.year and role %} &middot; {% endif %}{{ role }}{% endcapture %}
+    {% if meta != '' %}<span class="scene__meta meta">{{ meta }}</span>{% endif %}
+    {% assign ex = include.item.excerpt | strip %}{% unless ex == '' or ex contains '<' %}<span class="scene__sum">{{ ex }}</span>{% endunless %}
+  </a>
+</li>

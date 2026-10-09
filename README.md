@@ -1,67 +1,33 @@
-# Minimal Mistakes remote theme starter
+# temaram
 
-Click [**Use this template**](https://github.com/mmistakes/mm-github-pages-starter/generate) button above for the
-quickest method of getting started with
-the [Minimal Mistakes Jekyll theme](https://github.com/mmistakes/minimal-mistakes).
+Personal site of Sam Fareez: writing, portfolio and college notes. Jekyll 4 with a custom theme (dark/light, ASCII-rendered images, Monaspace fonts). Live at https://samfareez.is-a.dev.
 
-Contains basic configuration to get you a site with:
+## Stack
 
-- Sample posts.
-- Sample top navigation.
-- Sample author sidebar with social links.
-- Sample footer links.
-- Paginated home page.
-- Archive pages for posts grouped by year, category, and tag.
-- Sample about page.
-- Sample 404 page.
-- Site wide search.
+Jekyll ~> 4.4, `jekyll-paginate`, `jekyll-sitemap`, `jekyll-feed`, `jekyll-seo-tag`, `jekyll-toc`. Plain CSS/JS, no build step.
 
-Replace sample content with your own
-and [configure as necessary](https://mmistakes.github.io/minimal-mistakes/docs/configuration/).
+## Writing
 
----
+- **Post**: `_posts/YYYY-MM-DD-slug.md`. Front matter: `title`, optional `toc: true`, `tags`, `excerpt`.
+- **Portfolio**: `_portfolio/slug.md`. Front matter: `title`, `excerpt` (summary), `header.teaser` (cover image), `number` (order; items without it or with `hidden: true` are not listed). Optional `year`, `role`, `stack`, `link`.
+- **College note**: `_college-notes/season-N/course/NN-slug.md`. Only `title` is needed; season and course come from the path. Files are ordered by filename. `hidden: true` keeps a note off the index.
 
-## Troubleshooting
+## Run locally
 
-If you have a question about using Jekyll, start a discussion on the [Jekyll Forum](https://talk.jekyllrb.com/)
-or [StackOverflow](https://stackoverflow.com/questions/tagged/jekyll). Other resources:
+```sh
+bundle config set --local path vendor/bundle
+bundle install
+bundle exec jekyll serve   # http://localhost:4000
+```
 
-- [Ruby 101](https://jekyllrb.com/docs/ruby-101/)
-- [Setting up a Jekyll site with GitHub Pages](https://jekyllrb.com/docs/github-pages/)
-- [Configuring GitHub Metadata](https://github.com/jekyll/github-metadata/blob/master/docs/configuration.md#configuration)
-  to work properly when developing locally and
-  avoid `No GitHub API authentication could be found. Some fields may be missing or have incorrect data.` warnings.
+Profile links (home row and footer) live in `_data/links.yml`; icons are Font Awesome Free SVGs in `_includes/icons/` (CC BY 4.0, see `LICENSE.txt` there).
 
-## Local Installation
+## Deploy
 
-1. Install rbenv
-   ```bash
-   sudo apt install rbenv
-   ```
-2. Install ruby-build as plugin
-   ```bash
-   git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
-   ```
-3. Install ruby 3.1.2 with rbenv
-   ```bash
-   rbenv install 3.1.2
-   ```
-4. Set ruby 3.1.2 as global ruby
-   ```bash
-   rbenv global 3.1.2
-   ```
-5. Install bundler
-   ```bash
-   gem install bundler
-   ```
-6. Install dependencies
-   ```bash
-   bundle install
-   ```
-7. Run jekyll
+GitHub Actions (`.github/workflows/pages.yml`) builds and deploys on every push to `master`. Repo Settings > Pages > Source must be "GitHub Actions". `CNAME` carries the custom domain.
 
-   ```bash
-   bundle exec jekyll serve -l
-   # with development config
-   bundle exec jekyll serve -l --config _config.yml,_config_development.yml
-   ```
+## TODO
+
+- Chatbot (RAG): `assets/js/chatbot.js`, `assets/css/chatbot.css`, `sync_pinecone.py`, `chatbot_api_url` in `_config.yml` are kept but not wired into the layouts yet.
+- Typesense search.
+- Image ascii rendering

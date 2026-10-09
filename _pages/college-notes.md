@@ -1,11 +1,7 @@
 ---
 title: College Notes
-layout: single
+layout: notes
 permalink: /college-notes/
-classes: wide
-author_profile: false
-sidebar:
-    nav: "season-6"
 ---
 
 Catatan Kuliah Season 6. Buka catatan dengan klik navigasi di samping (atau diatas untuk mobile). Catatan ini diambil saat perkuliahan, tidak ada review karena nggak ada waktu. Untuk season 6 hanya mata kuliah Metode Penelitian, mata kuliah lain tidak ada karena saya konversi hehe.

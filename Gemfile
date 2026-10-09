@@ -1,18 +1,13 @@
 source "https://rubygems.org"
 
-gem "github-pages", group: :jekyll_plugins
+gem "jekyll", "~> 4.4"
+gem "webrick", "~> 1.8" # `jekyll serve` on Ruby 3+
+gem "erb"               # no longer a default gem on Ruby 3.4
 
-gem "minimal-mistakes-jekyll"
-
-# The following plugins are automatically loaded by the theme-gem:
-#   gem "jekyll-paginate"
-#   gem "jekyll-sitemap"
-#   gem "jekyll-gist"
-#   gem "jekyll-feed"
-#   gem "jekyll-include-cache"
-#
-# If you have any other plugins, put them here!
-# Cf. https://jekyllrb.com/docs/plugins/installation/
 group :jekyll_plugins do
+  gem "jekyll-paginate"
+  gem "jekyll-sitemap"
+  gem "jekyll-feed"
+  gem "jekyll-seo-tag"
+  gem "jekyll-toc"
 end
-gem "webrick", "~> 1.7"

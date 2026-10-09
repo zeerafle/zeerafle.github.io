@@ -1,0 +1,16 @@
+---
+layout: default
+---
+{% assign cover = page.header.image | default: page.header.teaser | default: page.cover %}
+<article class="prose">
+  <header class="article-head">
+    <p class="meta">PROJECT{% if page.year %} &middot; {{ page.year }}{% endif %}</p>
+    <h1>{{ page.title }}</h1>
+    {% if page.role or page.stack %}<p class="meta">{{ page.role }}{% if page.role and page.stack %} &middot; {% endif %}{{ page.stack | join: ', ' }}</p>{% endif %}
+    {% for s in page.sidebar %}<p class="meta">{{ s.title }}: {{ s.text }}</p>{% endfor %}
+  </header>
+  {% if cover %}<img class="cover" data-ascii src="{{ cover | relative_url }}" alt="{{ page.cover_alt | default: page.title }}">{% endif %}
+  {% if page.toc %}<nav class="toc" aria-label="Contents"><p class="meta">CONTENTS</p>{{ content | toc_only }}</nav>{% endif %}
+  {{ content }}
+  {% if page.link %}<p><a href="{{ page.link }}">View project &rarr;</a></p>{% endif %}
+</article>

@@ -1,0 +1,9 @@
+---
+layout: default
+---
+<h1 class="page-title">{{ page.title }}</h1>
+<div class="prose page-intro">{{ content }}</div>
+{% assign items = site[page.collection] | where_exp: 'i', 'i.hidden != true' | where_exp: 'i', 'i.number' | sort: 'number' %}
+<ol class="scenes">
+  {% for item in items %}{% include scene-row.html item=item n=forloop.index %}{% endfor %}
+</ol>

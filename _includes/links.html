@@ -1,0 +1,8 @@
+<nav class="elsewhere" aria-label="Profiles">
+  <p class="meta elsewhere__cmd" aria-hidden="true">$ ls ~/elsewhere</p>
+  <ul class="elsewhere__list">
+    {%- for l in site.data.links %}
+    <li><a href="{{ l.url }}" rel="me noopener" aria-label="{{ l.label }}">{% include icons/{{ l.icon }}.svg %}<span class="elsewhere__txt">{{ l.label }}</span></a></li>
+    {%- endfor %}
+  </ul>
+</nav>

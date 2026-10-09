@@ -1,0 +1,20 @@
+---
+layout: default
+---
+<h1 class="page-title">{{ page.title }}</h1>
+<div class="prose page-intro">{{ content }}</div>
+{% assign notes = site.college-notes | where_exp: 'n', 'n.hidden != true' | sort: 'path' %}
+{% assign seasons = notes | group_by_exp: 'n', "n.path | split: '/' | slice: 1 | first" | sort: 'name' | reverse %}
+{% for s in seasons %}
+<section class="season">
+  {% assign courses = s.items | group_by_exp: 'n', "n.path | split: '/' | slice: 2 | first" | sort: 'name' %}
+  {% for c in courses %}
+  {% assign first = c.items | first %}
+  {% include note-label.html item=first %}
+  <h2 class="meta label">{{ season }} &middot; {{ course }}</h2>
+  <ul class="credits">
+    {% for item in c.items %}{% include credit-row.html item=item label=course %}{% endfor %}
+  </ul>
+  {% endfor %}
+</section>
+{% endfor %}

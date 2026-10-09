@@ -1,0 +1,15 @@
+---
+layout: default
+---
+<h1 class="page-title">{{ page.title }}</h1>
+{{ content }}
+{% assign all = site.tags | sort %}
+{% if all.size == 0 %}<p class="meta">No tags yet.</p>{% endif %}
+{% for t in all %}
+<section aria-labelledby="t-{{ t[0] | slugify }}">
+  <h2 id="t-{{ t[0] | slugify }}" class="meta label">#{{ t[0] }}</h2>
+  <ul class="credits">
+    {% for item in t[1] %}{% include credit-row.html item=item %}{% endfor %}
+  </ul>
+</section>
+{% endfor %}

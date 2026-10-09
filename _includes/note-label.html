@@ -1,0 +1,9 @@
+{%- comment -%}
+  Derives "Season 6 · Metpen" from a note path like _college-notes/season-6/metpen/01-x.md.
+  Front matter `course` / `season` override. Output via capture: include.season, include.course set as page vars.
+{%- endcomment -%}
+{%- assign parts = include.item.path | split: '/' -%}
+{%- assign season = include.item.season | default: parts[1] | replace: '-', ' ' | capitalize -%}
+{%- assign course = include.item.course | default: parts[2] | replace: '-', ' ' | capitalize -%}
+{%- if parts.size < 4 and include.item.course == nil -%}{%- assign course = '' -%}{%- endif -%}
+{%- if parts.size < 3 and include.item.season == nil -%}{%- assign season = '' -%}{%- endif -%}

@@ -1,7 +1,40 @@
 ---
-# You don't need to edit this file, it's empty on purpose.
-# Edit theme's home layout instead if you wanna make some changes
-# See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
-layout: home
-author_profile: true
+layout: default
+title: Home
 ---
+{% if paginator.page == 1 %}
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero__art"><img data-ascii src="{{ '/assets/img/hero.jpg' | relative_url }}" alt="Portrait by a train window at golden hour"></div>
+  <div class="hero__text">
+    <p class="meta">REEL 01 &middot; 00:00:00</p>
+    <h1 id="hero-title" class="hero__title">{{ site.title }}</h1>
+    <p class="hero__tag"><span class="hero__type" style="--n:{{ site.tagline | size }}">{{ site.tagline }}</span></p>
+  </div>
+</section>
+{% include links.html %}
+{% endif %}
+
+<div class="recent">
+  <section aria-labelledby="r-writing">
+    <h2 id="r-writing" class="meta label" data-box>Recent writing</h2>
+    <ul class="credits">
+      {% for item in paginator.posts %}{% include credit-row.html item=item %}{% endfor %}
+    </ul>
+    {% if paginator.total_pages > 1 %}
+    <nav class="pager meta" aria-label="Pagination">
+      {% if paginator.previous_page %}<a rel="prev" href="{{ paginator.previous_page_path | relative_url }}">&larr; newer</a>{% endif %}
+      <span>{{ paginator.page }} / {{ paginator.total_pages }}</span>
+      {% if paginator.next_page %}<a rel="next" href="{{ paginator.next_page_path | relative_url }}">older &rarr;</a>{% endif %}
+    </nav>
+    {% endif %}
+  </section>
+  {% if paginator.page == 1 %}
+  <section aria-labelledby="r-work">
+    <h2 id="r-work" class="meta label" data-box>Selected work</h2>
+    <ol class="scenes">
+      {% assign projects = site.portfolio | where_exp: 'i', 'i.hidden != true' | where_exp: 'i', 'i.number' | sort: 'number' %}
+      {% for item in projects limit: 3 %}{% include scene-row.html item=item n=forloop.index %}{% endfor %}
+    </ol>
+  </section>
+  {% endif %}
+</div>

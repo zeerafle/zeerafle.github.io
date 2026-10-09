@@ -1,0 +1,9 @@
+# Single source of truth for profile links (home page row + footer).
+# icon = file name in _includes/icons/ (Font Awesome Free brands).
+- { label: LinkedIn,   icon: linkedin,   url: "https://linkedin.com/in/samfareez/" }
+- { label: GitHub,     icon: github,     url: "https://github.com/zeerafle" }
+- { label: X,          icon: x-twitter,  url: "https://twitter.com/zeerafle" }
+- { label: Instagram,  icon: instagram,  url: "https://instagram.com/zeerafle" }
+- { label: Letterboxd, icon: letterboxd, url: "https://boxd.it/7POXX" }
+- { label: Goodreads,  icon: goodreads,  url: "https://www.goodreads.com/user/show/107865794-sam-fareez" }
+- { label: Last.fm,    icon: lastfm,     url: "https://www.last.fm/user/zeerafle" }

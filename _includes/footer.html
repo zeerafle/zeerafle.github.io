@@ -1,8 +1,8 @@
 <footer class="foot">
   <div class="wrap foot__in">
-    <span class="foot__fin">[EOF] FIN.<span class="foot__exit meta"> exit 0</span></span>
-    <span class="meta">&copy; {{ 'now' | date: '%Y' }} {{ site.name }}
-      {%- for l in site.data.links %}{% if l.label == 'GitHub' or l.label == 'X' %} &middot; <a href="{{ l.url }}" rel="me noopener">{{ l.label }}</a>{% endif %}{% endfor %}
-      &middot; <a href="{{ '/feed.xml' | relative_url }}">RSS</a></span>
+    <span class="foot__l"><span class="foot__fin">[EOF] FIN.</span><span class="foot__exit meta"> exit 0</span></span>
+    <span class="meta foot__copy"><span class="foot__c">&copy; {{ 'now' | date: '%Y' }} {{ site.name }}</span><span class="foot__links">
+      {%- for l in site.data.links %}{% if l.label == 'GitHub' %}<span class="foot__dot"> &middot; </span><a href="{{ l.url }}" rel="me noopener">{{ l.label }}</a>{% endif %}{% endfor %}
+      <span class="foot__dot"> &middot; </span><a href="{{ '/feed.xml' | relative_url }}">RSS</a></span></span>
   </div>
 </footer>

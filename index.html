@@ -4,9 +4,9 @@ title: Home
 ---
 {% if paginator.page == 1 %}
 <section class="hero" aria-labelledby="hero-title">
-  <div class="hero__art"><img data-ascii src="{{ '/assets/img/hero.jpg' | relative_url }}" alt="Portrait by a train window at golden hour"></div>
+  <div class="hero__art"><picture><source media="(max-width: 39.99rem)" srcset="{{ '/assets/img/hero-portrait.jpg' | relative_url }}" width="1080" height="1440"><img data-ascii src="{{ '/assets/img/hero.jpg' | relative_url }}" width="1600" height="669" alt="Portrait by a train window at golden hour"></picture></div>
   <div class="hero__text">
-    <p class="meta">REEL 01 &middot; 00:00:00</p>
+    <p class="meta"><span class="hero__reel">REEL 01 &middot; 00:00:00</span><span class="hero__scene">SCENE 01 &middot; TAKE 01 &middot; 00:00:00</span></p>
     <h1 id="hero-title" class="hero__title">{{ site.title }}</h1>
     <p class="hero__tag"><span class="hero__type" style="--n:{{ site.tagline | size }}">{{ site.tagline }}</span></p>
   </div>

@@ -96,6 +96,38 @@ img.is-ascii { display: none; }
 .theme-toggle { display: none; font: .75rem var(--mono); letter-spacing: .04em; color: var(--meta); background: none; border: 0; padding: 0; cursor: pointer; }
 .ready .theme-toggle { display: inline; }
 .theme-toggle:hover { color: var(--accent); }
+.nav__menu, .nav__cmd, .hero__scene { display: none; }
+.nav__menu { font: .75rem var(--mono); letter-spacing: .04em; color: var(--meta); background: none; border: 0; padding: 0; cursor: pointer; }
+.nav__menu:hover, .nav__menu[aria-expanded="true"] { color: var(--accent); }
+@media (max-width: 39.99rem) {
+  .nav__in { flex-wrap: wrap; align-items: center; row-gap: .4rem; }
+  .nav__brand { font-size: .95rem; }
+  /* hero: framed still with the slate caption underneath. (Root cause of the old overflow: min-height + aspect-ratio on an auto-width block grew the hero to min-height*2.39 px wide.) */
+  .hero { aspect-ratio: auto; min-height: 0; overflow: visible; border: 0; background: none; margin-top: 1.25rem; }
+  .hero__art { position: relative; inset: auto; aspect-ratio: 3 / 4; overflow: hidden; border-block: .6rem solid var(--bar); background: var(--art-bg); }
+  .hero__text { position: static; padding: .9rem 1.25rem 0; background: none; border-top: 1px dotted var(--meta); margin-top: .9rem; }
+  .hero__reel { display: none; }
+  .hero__scene { display: inline; }
+  .hero__tag { text-shadow: none; }
+  .hero__type { display: inline; width: auto; white-space: normal; border-right: 0; animation: none; }
+  .hero__type::after { content: ""; display: inline-block; width: .6em; height: 1em; margin-left: .2em; vertical-align: text-bottom; background: var(--accent); animation: blink 1s steps(1) infinite; } /* no typing on mobile: ch width would clip at 320px */
+  .nav__r { align-items: center; gap: .2rem; margin-right: -.3rem; }
+  /* no JS: links wrap in a simple row under the brand */
+  .nav__r { flex-wrap: wrap; }
+  .nav__links { flex-wrap: wrap; gap: .4rem 1rem; }
+  .ready .nav__r { flex-wrap: nowrap; }
+  .ready .theme-toggle, .ready .nav__menu { display: inline-flex; align-items: center; min-height: 44px; padding: 0 .3rem; justify-content: center; }
+  .ready .nav__links { position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; gap: 0; padding: .5rem 1.25rem 1rem; background: color-mix(in srgb, var(--bg) 97%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--rule); opacity: 0; transform: translateY(-6px); visibility: hidden; pointer-events: none; transition: opacity .18s, transform .18s, visibility 0s .18s; }
+  .ready .nav.is-open .nav__links { opacity: 1; transform: none; visibility: visible; pointer-events: auto; transition: opacity .18s, transform .18s; }
+  .ready .nav__cmd { display: block; font: .72rem var(--mono); color: var(--meta); opacity: .8; padding: .3rem 0; border-bottom: 1px dotted var(--meta); margin-bottom: .3rem; }
+  .ready .nav__links a { display: flex; align-items: center; min-height: 44px; font-size: .9rem; padding-left: 1.4ch; }
+  .ready .nav__links a[aria-current] { padding-left: 0; }
+  .ready .nav__links:hover a:not(:hover) { filter: none; opacity: 1; }
+  .ready .nav__menu { display: inline-flex; }
+}
+@media (max-width: 22rem) {
+  .nav__brand { font-size: .8rem; }
+}
 
 /* content */
 .fade { animation: fade 1s ease-out both; padding-bottom: 5rem; }
@@ -197,4 +229,18 @@ ul.credits, ol.scenes { list-style: none; margin: 0; padding: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
   .elsewhere__list:hover a:not(:hover):not(:focus-visible) { filter: none; opacity: 1; }
+}
+
+/* footer: single-column end-credits on mobile */
+@media (max-width: 39.99rem) {
+  .foot { padding: 1.5rem 0 calc(2rem + env(safe-area-inset-bottom)); border-top: 1px dotted var(--meta); }
+  .foot__in { flex-direction: column; align-items: flex-start; gap: .35rem; }
+  .foot__l, .foot__copy { display: contents; }
+  .foot__fin { order: 1; white-space: nowrap; }
+  .foot__c { order: 2; display: block; white-space: nowrap; text-transform: none; letter-spacing: .04em; }
+  .foot__links { order: 3; display: flex; flex-wrap: wrap; gap: 0 1.4rem; text-transform: none; }
+  .foot__dot { display: none; }
+  .foot__links a { display: inline-flex; align-items: center; min-height: 44px; }
+  .foot__exit { order: 4; white-space: nowrap; margin-top: .2rem; }
+  .foot__exit::before { content: "$"; }
 }

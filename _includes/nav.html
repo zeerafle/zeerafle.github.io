@@ -2,7 +2,8 @@
   <div class="wrap nav__in">
     <a class="nav__brand" href="{{ '/' | relative_url }}">{{ site.username | default: site.github_username }}@{{ site.title }}:~$<span class="cursor" aria-hidden="true"></span></a>
     <div class="nav__r">
-    <nav aria-label="Primary" class="nav__links">
+    <nav aria-label="Primary" class="nav__links" id="site-nav">
+      <span class="nav__cmd" aria-hidden="true">$ ls ~/</span>
       {% assign here = page.url %}
       <a href="{{ '/portfolio/' | relative_url }}"{% if here contains '/portfolio' %} aria-current="page"{% endif %}>~/portfolio</a>
       <a href="{{ '/posts/' | relative_url }}"{% if here == '/posts/' or page.collection == 'posts' or page.layout == 'post' and page.kind == 'Blog' %} aria-current="page"{% endif %}>~/posts</a>
@@ -10,6 +11,7 @@
       <a href="{{ '/about/' | relative_url }}"{% if here contains '/about' %} aria-current="page"{% endif %}>~/about</a>
     </nav>
     <button type="button" class="theme-toggle" data-theme-toggle></button>
+    <button type="button" class="nav__menu" aria-controls="site-nav" aria-expanded="false" aria-label="Menu" data-nav-menu><span aria-hidden="true">[ls]</span></button>
     </div>
   </div>
 </header>

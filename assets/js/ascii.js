@@ -33,7 +33,7 @@
     ch = h / rows;
     if (cvs.width !== Math.round(w * dpr) || cvs.height !== Math.round(h * dpr)) {
       cvs.width = Math.round(w * dpr); cvs.height = Math.round(h * dpr);
-      cvs.style.width = w + "px"; cvs.style.height = h + "px";
+      if (!o.cover) { cvs.style.width = w + "px"; cvs.style.height = h + "px"; } // hero canvas is sized by CSS (100% of frame), never by a stale px value
     }
     var cx = 0, cy = 0, cwid = sw, chei = sh;
     if (o.cover) {
@@ -93,19 +93,23 @@
     var cvs = document.createElement("canvas");
     cvs.className = "ascii-cvs"; cvs.setAttribute("role", "img");
     cvs.setAttribute("aria-label", img.alt || "");
-    var box = img.parentNode, hero = box.classList.contains("hero__art");
+    var box = img.closest(".hero__art") || img.parentNode, hero = box.classList.contains("hero__art");
     function draw() {
       if (hero) { if (box.clientWidth > 0 && box.clientHeight > 0) paint(cvs, img, box.clientWidth, box.clientHeight, HERO); return; }
       var w = Math.min(box.clientWidth || img.naturalWidth, 960);
       paint(cvs, img, w, w * img.naturalHeight / img.naturalWidth, COVER);
     }
+    var started = false;
     function go() {
       if (!img.naturalWidth) return;
-      img.after(cvs); draw(); ready();
+      if (started) { draw(); return; } // <picture> source swap fires load again: repaint from the new currentSrc
+      started = true;
+      (img.parentNode.tagName === "PICTURE" ? img.parentNode : img).after(cvs); draw(); ready();
       img.classList.add("is-ascii"); img.setAttribute("aria-hidden", "true");
       redraws.push(draw); new ResizeObserver(draw).observe(box);
     }
-    if (img.complete) go(); else img.addEventListener("load", go);
+    img.addEventListener("load", go);
+    if (img.complete) go();
   }
 
   function init() {

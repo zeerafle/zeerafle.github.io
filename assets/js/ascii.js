@@ -95,7 +95,7 @@
     cvs.setAttribute("aria-label", img.alt || "");
     var box = img.closest(".hero__art") || img.parentNode, hero = box.classList.contains("hero__art");
     function draw() {
-      if (hero) { if (box.clientWidth > 0 && box.clientHeight > 0) paint(cvs, img, box.clientWidth, box.clientHeight, HERO); return; }
+      if (hero) { if (box.clientWidth > 0 && box.clientHeight > 0) paint(cvs, img, box.clientWidth, box.clientHeight, box.clientWidth < 640 ? Object.assign({}, HERO, { cell: 2.5, fs: false, gamma: .6 }) : HERO); return; }
       var w = Math.min(box.clientWidth || img.naturalWidth, 960);
       paint(cvs, img, w, w * img.naturalHeight / img.naturalWidth, COVER);
     }

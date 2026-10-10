@@ -1,0 +1,13 @@
+{%- assign bot = site.chatbot -%}
+{%- if bot.url -%}
+<div class="ask" id="ask" data-url="{{ bot.url }}" data-model="{{ bot.model }}" data-system="{{ bot.system | escape }}" data-base="{{ '/assets/js/vendor/' | relative_url }}"{% if page.ask_open %} data-open{% endif %}>
+  <div class="ask__scrim" data-ask-close></div>
+  <section class="ask__panel" role="dialog" aria-label="Ask" inert>
+    <div class="ask__in">
+      <header class="ask__bar"><span>ask@{{ site.title }}:~$</span><button type="button" data-ask-close aria-label="Close">[esc]</button></header>
+      <div class="ask__log" role="log" aria-live="polite" tabindex="0"></div>
+      <form class="ask__form" autocomplete="off"><label for="ask-in" class="ask__ps">&gt;</label><input id="ask-in" type="text" enterkeyhint="send" spellcheck="false" autocapitalize="off" placeholder="ask me anything · /help"></form>
+    </div>
+  </section>
+</div>
+{%- endif -%}

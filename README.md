@@ -28,6 +28,7 @@ GitHub Actions (`.github/workflows/pages.yml`) builds and deploys on every push 
 
 ## TODO
 
-- Chatbot (RAG): `assets/js/chatbot.js`, `assets/css/chatbot.css`, `sync_pinecone.py`, `chatbot_api_url` in `_config.yml` are kept but not wired into the layouts yet.
+- Chatbot: `$ ask` drawer (`_includes/ask.html`, `assets/js/ask.js`) talks to `chatbot.url` in `_config.yml` (OpenAI-compatible). No key in the browser; the gateway must inject it and send CORS headers. `sync_pinecone.py` is the old RAG sync, unused by the drawer.
 - Typesense search.
 - Image ascii rendering
+- portfolio layout

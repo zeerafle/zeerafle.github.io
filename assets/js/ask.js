@@ -5,7 +5,7 @@
   if (!root) return;
   var d = root.dataset, panel = root.querySelector(".ask__panel"), log = root.querySelector(".ask__log"),
       form = root.querySelector("form"), input = form.querySelector("input"),
-      KEY = "ask", KEEP = 12, msgs = [], busy = false, opener = null, hi = 0, libs;
+      KEY = "ask", KEEP = 12, msgs = [], busy = false, opener = null, hi = 0, libs, awake = null, booting = false;
 
   try {
     var nt = performance.getEntriesByType("navigation")[0];
@@ -44,6 +44,38 @@
     log.scrollTop = log.scrollHeight;
   }
 
+  // The backend scales to zero on Fly. Wake it on intent (hover/focus/open), never on page load, and keep a boot log up while it starts.
+  var WARM = "ask.warm", TTL = 180000, BOOT = ["ssh rag@fly.dev", "waking machine · cold start, ~10s", "loading plugins: langchain · pinecone · embeddings", "mounting knowledge base"];
+  function sleep(ms) { return new Promise(function (ok) { setTimeout(ok, ms); }); }
+  function fresh() { try { return Date.now() - +sessionStorage.getItem(WARM) < TTL; } catch (e) { return false; } }
+  function warmed() { try { sessionStorage.setItem(WARM, Date.now()); } catch (e) {} }
+  function wake() {
+    if (fresh()) return Promise.resolve(true);
+    return awake || (awake = (async function () {
+      for (var end = Date.now() + 60000; Date.now() < end;) {
+        var ac = new AbortController(), t = setTimeout(function () { ac.abort(); }, 15000);
+        try { if ((await fetch(d.url + "/health", { signal: ac.signal })).ok) { warmed(); return true; } } catch (e) {} finally { clearTimeout(t); }
+        await sleep(1500);
+      }
+      return false;
+    })().then(function (ok) { awake = null; return ok; }));
+  }
+  async function boot() {
+    if (booting || fresh()) return;
+    booting = true;
+    var res, p = wake().then(function (r) { res = r; });
+    await Promise.race([p, sleep(500)]); // warm machine answers at once: no theatre
+    for (var i = 0, el; res === undefined && i < BOOT.length; i++) {
+      el = info(BOOT[i] + " …");
+      await Promise.race([p, sleep(1400)]);
+      el.textContent = BOOT[i] + (res === false ? " failed" : res === undefined && i === BOOT.length - 1 ? " …" : " ok");
+    }
+    await p;
+    if (log.lastChild && /…$/.test(log.lastChild.textContent)) log.lastChild.textContent = log.lastChild.textContent.replace(/…$/, "ok");
+    if (res !== undefined && i) info(res ? "ready." : "backend not responding. you can still try asking.");
+    booting = false;
+  }
+
   function open(on) {
     if (on === root.classList.contains("is-open")) return;
     root.classList.toggle("is-open", on);
@@ -52,7 +84,7 @@
     if (on) {
       opener = document.activeElement;
       if (!log.childNodes.length) replay();
-      ensureLibs(); input.focus();
+      ensureLibs(); input.focus(); boot();
     } else if (opener && opener.focus) { opener.focus(); }
   }
 
@@ -67,9 +99,11 @@
     var history = msgs.slice(-KEEP);
     line("u", text);
     var el = line("a"), wait = document.createElement("span");
-    wait.className = "ask__wait"; wait.textContent = "thinking…"; el.appendChild(wait);
+    wait.className = "ask__wait"; wait.textContent = fresh() ? "thinking…" : "waking backend…"; el.appendChild(wait);
     try {
       var res, ans;
+      await wake(); // no-op when warm; a failure falls through to the fetch below, which reports it
+      wait.textContent = "thinking…";
       try {
         res = await fetch(d.url + "/chat", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ message: text, history: history }) });
       } catch (err) { throw { err: err }; }
@@ -77,6 +111,7 @@
         var j = await res.json().catch(function () { return {}; });
         throw { status: res.status, detail: typeof j.detail === "string" ? j.detail : "" };
       }
+      warmed();
       ans = (await res.json()).message;
       if (!ans) throw { detail: "empty reply" };
       await ensureLibs();
@@ -112,6 +147,9 @@
     input.value = h[hi] || "";
   });
 
+  ["pointerover", "pointerdown", "focusin"].forEach(function (ev) {
+    document.addEventListener(ev, function (e) { if (e.target.closest && e.target.closest("[data-ask]")) wake(); });
+  });
   root.addEventListener("click", function (e) { if (e.target.closest("[data-ask-close]")) open(false); });
   document.addEventListener("click", function (e) {
     var a = e.target.closest("[data-ask]");

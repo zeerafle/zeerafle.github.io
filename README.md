@@ -28,7 +28,7 @@ GitHub Actions (`.github/workflows/pages.yml`) builds and deploys on every push 
 
 ## TODO
 
-- Chatbot: `$ ask` drawer (`_includes/ask.html`, `assets/js/ask.js`) talks to `chatbot.url` in `_config.yml` (OpenAI-compatible). No key in the browser; the gateway must inject it and send CORS headers. `sync_pinecone.py` is the old RAG sync, unused by the drawer.
+- Chatbot: `$ ask` drawer (`_includes/ask.html`, `assets/js/ask.js`) calls the RAG backend at `chatbot.url` in `_config.yml` (`POST /chat {message, history}`). The LLM key (`FREELLMAPI_KEY`) lives in that backend. `sync_pinecone.py` feeds its index.
 - Typesense search.
 - Image ascii rendering
 - portfolio layout

@@ -1,5 +1,5 @@
-// `$ ask` drawer: drop-down terminal over an OpenAI-compatible /chat/completions endpoint.
-// History lives in sessionStorage (survives page navigation, cleared on reload). No API key here: the gateway must hold it.
+// `$ ask` drawer: drop-down terminal over the RAG backend (POST /chat {message, history} -> {message}).
+// History lives in sessionStorage (survives page navigation, cleared on reload). The LLM key lives in the backend, never here.
 (function () {
   var root = document.getElementById("ask");
   if (!root) return;
@@ -56,54 +56,37 @@
     } else if (opener && opener.focus) { opener.focus(); }
   }
 
-  function fail(status, err) {
-    if (status === 429) return "rate limited, try again in a bit.";
-    if (status === 401 || status === 403) return "the gateway refused the request (auth).";
-    if (status) return "gateway error " + status + ".";
-    return "cannot reach the model (" + (err && err.message || "network") + ").";
+  function fail(status, detail, err) {
+    if (status === 429) return detail || "rate limited, try again in a bit.";
+    if (status) return detail || "backend error " + status + ".";
+    return "cannot reach the backend (" + (err && err.message || "network") + ").";
   }
 
   async function send(text) {
     busy = true; form.classList.add("is-busy");
-    msgs.push({ role: "user", content: text });
+    var history = msgs.slice(-KEEP);
     line("u", text);
     var el = line("a"), wait = document.createElement("span");
     wait.className = "ask__wait"; wait.textContent = "thinking…"; el.appendChild(wait);
-    var acc = "", queued = false;
-    function paint() { queued = false; render(el, acc); log.scrollTop = log.scrollHeight; }
     try {
-      await ensureLibs();
-      var body = { messages: [{ role: "system", content: d.system }].concat(msgs.slice(-KEEP)), stream: true };
-      if (d.model) body.model = d.model;
-      var r = await fetch(d.url + "/chat/completions", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
-      if (!r.ok) throw { status: r.status };
-      if ((r.headers.get("content-type") || "").indexOf("text/event-stream") < 0) {
-        acc = (await r.json()).choices[0].message.content || "";
-      } else {
-        var rd = r.body.getReader(), dec = new TextDecoder(), buf = "";
-        for (;;) {
-          var chunk = await rd.read();
-          if (chunk.done) break;
-          buf += dec.decode(chunk.value, { stream: true });
-          var rows = buf.split("\n"); buf = rows.pop();
-          for (var i = 0; i < rows.length; i++) {
-            if (rows[i].indexOf("data:") !== 0) continue;
-            var p = rows[i].slice(5).trim();
-            if (!p || p === "[DONE]") continue;
-            var c = JSON.parse(p).choices;
-            acc += c && c[0] && c[0].delta && c[0].delta.content || "";
-            if (!queued) { queued = true; requestAnimationFrame(paint); }
-          }
-        }
+      var res, ans;
+      try {
+        res = await fetch(d.url + "/chat", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ message: text, history: history }) });
+      } catch (err) { throw { err: err }; }
+      if (!res.ok) {
+        var j = await res.json().catch(function () { return {}; });
+        throw { status: res.status, detail: typeof j.detail === "string" ? j.detail : "" };
       }
-      if (!acc) throw new Error("empty reply");
-      paint();
-      msgs.push({ role: "assistant", content: acc });
-    } catch (err) {
-      msgs.pop(); // keep user/assistant alternating
-      el.className = "ask__m ask__m--e"; el.textContent = "error: " + fail(err && err.status, err);
+      ans = (await res.json()).message;
+      if (!ans) throw { detail: "empty reply" };
+      await ensureLibs();
+      render(el, ans);
+      msgs.push({ role: "user", content: text }, { role: "assistant", content: ans });
+    } catch (e) {
+      el.className = "ask__m ask__m--e"; el.textContent = "error: " + fail(e.status, e.detail, e.err);
     }
-    save(); busy = false; form.classList.remove("is-busy"); input.focus();
+    log.scrollTop = log.scrollHeight;
+    hi = msgs.length / 2; save(); busy = false; form.classList.remove("is-busy"); input.focus();
   }
 
   var CMD = {
@@ -117,7 +100,7 @@
     if (!t || busy) return;
     input.value = "";
     if (t[0] === "/") { line("u", t); (CMD[t] || function () { info("unknown command: " + t); })(); return; }
-    send(t); hi = msgs.filter(function (m) { return m.role === "user"; }).length;
+    send(t);
   });
 
   input.addEventListener("keydown", function (e) {

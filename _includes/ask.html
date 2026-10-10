@@ -1,6 +1,6 @@
 {%- assign bot = site.chatbot -%}
 {%- if bot.url -%}
-<div class="ask" id="ask" data-url="{{ bot.url }}" data-model="{{ bot.model }}" data-system="{{ bot.system | escape }}" data-base="{{ '/assets/js/vendor/' | relative_url }}"{% if page.ask_open %} data-open{% endif %}>
+<div class="ask" id="ask" data-url="{{ bot.url }}" data-base="{{ '/assets/js/vendor/' | relative_url }}"{% if page.ask_open %} data-open{% endif %}>
   <div class="ask__scrim" data-ask-close></div>
   <section class="ask__panel" role="dialog" aria-label="Ask" inert>
     <div class="ask__in">

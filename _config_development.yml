@@ -1,1 +1,2 @@
-chatbot_api_url: "http://localhost:8000"
+chatbot:
+  url: "http://localhost:8000"

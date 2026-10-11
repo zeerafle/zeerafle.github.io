@@ -1,0 +1,9 @@
+---
+layout: null
+sitemap: false
+---
+{%- assign about = site.pages | where: "url", "/about/" -%}
+{%- assign docs = site.posts | concat: site.portfolio | concat: site.college-notes | concat: about | where_exp: "d", "d.hidden != true" -%}
+[{%- for d in docs -%}{%- if forloop.index > 1 -%},{%- endif -%}
+{"id":{{ d.url | jsonify }},"url":{{ d.url | relative_url | jsonify }},"title":{{ d.title | jsonify }},"kind":{% case d.collection %}{% when "posts" %}"post"{% when "portfolio" %}"work"{% when "college-notes" %}"notes"{% else %}"page"{% endcase %},"content":{{ d.content | markdownify | strip_html | normalize_whitespace | jsonify }}}
+{%- endfor -%}]

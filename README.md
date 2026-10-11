@@ -26,9 +26,12 @@ Profile links (home row and footer) live in `_data/links.yml`; icons are Font Aw
 
 GitHub Actions (`.github/workflows/pages.yml`) builds and deploys on every push to `master`. Repo Settings > Pages > Source must be "GitHub Actions". `CNAME` carries the custom domain.
 
-## TODO
+## Chatbot and search
 
 - Chatbot: `$ ask` drawer (`_includes/ask.html`, `assets/js/ask.js`) calls the RAG backend at `chatbot.url` in `_config.yml` (`POST /chat {message, history}`). The LLM key (`FREELLMAPI_KEY`) lives in that backend. `sync_pinecone.py` feeds its index.
-- Typesense search.
+- Search: `$ grep` overlay (`/` or the nav item; `_includes/search.html`, `assets/js/search.js`) queries Typesense (`search:` in `_config.yml`, search-only key). `search.json` is rendered at build and `index_typesense.py` upserts it in the Pages workflow using the `TYPESENSE_INDEX_KEY` secret. Hidden pages are not indexed. Re-index by hand: `jekyll build`, then `TYPESENSE_HOST=... TYPESENSE_INDEX_KEY=... python3 index_typesense.py`.
+
+## TODO
+
 - Image ascii rendering
 - portfolio layout

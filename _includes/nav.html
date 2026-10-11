@@ -9,6 +9,7 @@
       <a href="{{ '/posts/' | relative_url }}"{% if here == '/posts/' or page.collection == 'posts' or page.layout == 'post' and page.kind == 'Blog' %} aria-current="page"{% endif %}>~/posts</a>
       <a href="{{ '/college-notes/' | relative_url }}"{% if here contains '/college-notes' %} aria-current="page"{% endif %}>~/notes</a>
       <a href="{{ '/about/' | relative_url }}"{% if here contains '/about' %} aria-current="page"{% endif %}>~/about</a>
+      <a href="#grep" data-grep title="Toggle with /">$ grep</a>
       <a href="{{ '/ask/' | relative_url }}" data-ask title="Toggle with `"{% if here contains '/ask' %} aria-current="page"{% endif %}>$ ask</a>
     </nav>
     <button type="button" class="theme-toggle" data-theme-toggle></button>

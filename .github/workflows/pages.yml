@@ -29,6 +29,14 @@ jobs:
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: production
+      # Search must never block a deploy. The index file is build input only, so keep it out of the published site.
+      - name: Index search
+        continue-on-error: true
+        run: python3 index_typesense.py
+        env:
+          TYPESENSE_HOST: https://zeerafle-typesense.duckdns.org
+          TYPESENSE_INDEX_KEY: ${{ secrets.TYPESENSE_INDEX_KEY }}
+      - run: rm -f _site/search.json
       - uses: actions/upload-pages-artifact@v5
 
   deploy:

@@ -1,0 +1,13 @@
+{%- assign s = site.search -%}
+{%- if s.host and s.key -%}
+<div class="grep" id="grep" data-host="{{ s.host }}" data-collection="{{ s.collection | default: 'temaram_pages' }}" data-key="{{ s.key }}">
+  <div class="grep__scrim" data-grep-close></div>
+  <section class="grep__panel" role="dialog" aria-label="Search" inert>
+    <div class="grep__in">
+      <form class="grep__form" role="search" autocomplete="off"><label for="grep-in" class="grep__ps">$ grep</label><input id="grep-in" type="search" enterkeyhint="go" spellcheck="false" autocapitalize="off" placeholder="posts, work, notes" role="combobox" aria-expanded="false" aria-controls="grep-out" aria-autocomplete="list"><button type="button" data-grep-close aria-label="Close">[esc]</button></form>
+      <ol class="grep__out" id="grep-out" role="listbox" aria-label="Results"></ol>
+      <footer class="grep__foot"><span class="grep__stat" role="status" aria-live="polite">type to search</span><span class="grep__keys" aria-hidden="true">↑↓ select · ⏎ open · esc close</span></footer>
+    </div>
+  </section>
+</div>
+{%- endif -%}

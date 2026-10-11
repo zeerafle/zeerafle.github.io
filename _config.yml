@@ -41,6 +41,12 @@ timezone: Turkey
 chatbot:
   url: "https://personal-website-rag-dry-night-3555.fly.dev"
 repository: "zeerafle/zeerafle.github.io"
+# `$ grep` overlay (assets/js/search.js) -> Typesense. The key is search-only and scoped to one collection, so it is safe to publish.
+# Indexing runs in CI (index_typesense.py) with the TYPESENSE_INDEX_KEY secret.
+search:
+  host: "https://zeerafle-typesense.duckdns.org"
+  collection: "temaram_pages"
+  key: "cj4puwXmoXU9bXqXmCNb5W9iykKu2pRC"
 
 include:
   - _pages
@@ -52,6 +58,7 @@ exclude:
   - README.md
   - requirements.txt
   - sync_pinecone.py
+  - index_typesense.py
   - node_modules
   - vendor
   - .bundle
